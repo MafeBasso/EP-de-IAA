@@ -18,6 +18,11 @@ extern int remover1(int k, int n, int * v){
 
 /* Programa 1b */
 extern int inserir1(int x, int k, int n, int * v){
+    if (k == 0 && n == 0) {
+        v[k] = x;
+        n++;
+        return n;
+    }
     if (n < 0 || n >= MAX || k < 0 || k > n-1) return -1;
     for (int m = n; m >= k+1; m--) {
         v[m] = v[m-1];
@@ -48,7 +53,7 @@ extern int remover2(int k, int n, int ini, int fim, int * v){
 
 /* Programa 3 */
 extern void inserir3(int x, int k, int n, int * v){
-    if (n < 0 || n >= MAX || k < 0 || k > n-1) return;
+    if (n < 0 || n >= MAX || k < 0 || k > n-2) return;
     for (int m = n; m > k+1; m--) {
         v[m] = v[m-1];
     }
@@ -113,10 +118,12 @@ extern void remover6(int y, int n, int ini, int fim, int * v){
 /* Programa 7 */
 extern int onde(int x, int n, int * v) {
     if (n <= 0 || n > MAX) return -1;
-    if (v[n-1] == x) {
-        return (n-1);
+    static int pos = 0;
+    if (v[pos] == x) {
+        return pos;
     }
-    return onde(x, n-1, v);
+    pos++;
+    return onde(x, n, v);
 }
 
 /* Programa 8 */
