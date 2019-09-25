@@ -136,7 +136,11 @@ extern int localiza(int x, int n, int ini, int fim, int * v){
 
 /* Programa 9 */
 extern int * subSequenciaMaxima(int n, int * v, int * tamret){
-    if (n < 0 || n > MAX) return -1;
+    if (n < 0 || n > MAX) {
+        int* erro = NULL;
+        *tamret = -1;
+        return erro;
+    }
     int globalmax = 0, sufixmax = 0, globalprim = 0, globalult = 0, sufixult = 0, cont = 0;
     for (int i = 0; i < n; i++) {
         if (v[i]+sufixmax > globalmax) {
