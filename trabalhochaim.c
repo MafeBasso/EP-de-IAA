@@ -8,7 +8,7 @@
 
 /* Programa 1a */
 extern int remover1(int k, int n, int * v){
-    if (n < 0 || n > MAX || k < 0 || k > n-1) return -1;
+    if (n <= 0 || n > MAX || k < 0 || k > n-1) return -1;
     for (int m = k; m <= n-2; m++) {
         v[m] = v[m+1];
     }
@@ -34,7 +34,7 @@ extern int inserir1(int x, int k, int n, int * v){
 
 /* Programa 2 */
 extern int remover2(int k, int n, int ini, int fim, int * v){
-    if (n < 0 || n > MAX || ini < 0 || fim > n || ini > fim-1 || k < ini || k > fim-1) return -1;
+    if (n <= 0 || n > MAX || ini < 0 || fim > n || ini > fim-1 || k < ini || k > fim-1) return -1;
     if (fim-1 == ini) {
         fim--;
     } else if (k-ini <= fim-1-k) {
@@ -53,6 +53,11 @@ extern int remover2(int k, int n, int ini, int fim, int * v){
 
 /* Programa 3 */
 extern void inserir3(int x, int k, int n, int * v){
+    if (k == 0 && n == 0) {
+        v[k] = x;
+        n++;
+        return;
+    }
     if (n < 0 || n >= MAX || k < 0 || k > n-2) return;
     for (int m = n; m > k+1; m--) {
         v[m] = v[m-1];
@@ -94,7 +99,7 @@ extern int ehSubsequencia(int tamX, int * x, int n, int * v){
 
 /* Programa 6 */
 extern void remover6(int y, int n, int ini, int fim, int * v){
-    if (n < 0 || n > MAX || ini < 0 || ini > fim-1 || fim > n) return;
+    if (n <= 0 || n > MAX || ini < 0 || ini > fim-1 || fim > n) return;
     int g = 0;
     for (int m = ini; m <= fim-1; m++) {
         if (v[m] == y) {
