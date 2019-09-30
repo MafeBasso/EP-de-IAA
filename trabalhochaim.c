@@ -321,7 +321,7 @@ if(v6[0]==b6[0] && v6[1] != 1 && v6[2] != 1)
 
 /* Teste programa 7 */
 
-if(onde(6,11,v7) == 6) acertos++;
+if(onde(6,11,v7) == 5) acertos++;
 
 /* Teste programa 8 */
 
